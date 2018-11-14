@@ -30,12 +30,13 @@ Jupyter notebooks:
      retrieve information from the operating system.
   1. [`filesystem_interaction.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/filesystem_interaction.ipynb):
      illustrates how to work with the file system.
-  1. `shell_interaction.ipynb`: illustrates the use of the `sh` and
+  1. [`shell_interaction.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/shell_interaction.ipynb):
+     illustrates the use of the `sh` and
      `subprocess` modules to interact with the shell.
   1. [`julia.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/julia.ipynb):
      illustrates monitoring a running process.
-  1. `compressed_files.ipynb`: Jupyter notebook illustrating how to
-     work with compressed files and archives.
+  1. [`compressed_files.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/compressed_files.ipynb):
+     illustrating how to work with compressed files and archives.
 
 The notebook on SSH is not included, since that can not be used
 without proper authentication.
