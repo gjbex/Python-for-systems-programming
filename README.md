@@ -1,7 +1,9 @@
 # Python systems programming
 
 This repository contains material for a training on how to do systems
-programming using Python
+programming using Python.  The notebooks can be executed on:
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gjbex/PythonSysProg/master)
 
 Python is a very versatile programming language that has a wide range of
 applications.  This training concentrates on interaction with the
