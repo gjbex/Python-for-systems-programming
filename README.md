@@ -1,9 +1,8 @@
 # Python systems programming
 
 This repository contains material for a training on how to do systems
-programming using Python.  The notebooks can be executed on:
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gjbex/PythonSysProg/master)
+programming using Python.  The notebooks can be executed on
+[Google Colab](https://colab.research.google.com/).
 
 Python is a very versatile programming language that has a wide range of
 applications.  This training concentrates on interaction with the
@@ -26,14 +25,15 @@ Subjects and Python modules that will be covered:
 
 Jupyter notebooks:
 
-  1. `system_information.ipynb`: illustrates how to use several
-     standard library modules to retrieve information from the
-     operating system.
-  1. `filesystem_interaction.ipynb`: illustrates how to work with the
-     file system.
+  1. [`system_information.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/system_information.ipynb):
+     illustrates how to use several standard library modules to
+     retrieve information from the operating system.
+  1. [`filesystem_interaction.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/filesystem_interaction.ipynb):
+     illustrates how to work with the file system.
   1. `shell_interaction.ipynb`: illustrates the use of the `sh` and
      `subprocess` modules to interact with the shell.
-  1. `julia.ipynb`: illustrates monitoring a running process.
+  1. [`julia.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/julia.ipynb):
+     illustrates monitoring a running process.
   1. `compressed_files.ipynb`: Jupyter notebook illustrating how to
      work with compressed files and archives.
 
