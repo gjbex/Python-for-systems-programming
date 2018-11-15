@@ -25,9 +25,10 @@ Subjects and Python modules that will be covered:
 
 Jupyter notebooks:
 
-  1. [`system_information.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/system_information.ipynb):
+  1. `system_information.ipynb`:
      illustrates how to use several standard library modules to
-     retrieve information from the operating system.
+     retrieve information from the operating system
+     [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/system_information.ipynb)
   1. [`filesystem_interaction.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/filesystem_interaction.ipynb):
      illustrates how to work with the file system.
   1. [`shell_interaction.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/shell_interaction.ipynb):
