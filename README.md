@@ -45,4 +45,5 @@ Supporting materials:
 
   1. `julia_omp.f90`: Fortran source code used in several of the Jupyter
      notebooks.
-     
+  1. `conda_environment.yml`: conda environment (Linux 64-bit) to run
+     the notebooks.     
