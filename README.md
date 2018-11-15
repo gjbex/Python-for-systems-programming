@@ -29,9 +29,11 @@ Jupyter notebooks:
      illustrates how to use several standard library modules to
      retrieve information from the operating system
      [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/system_information.ipynb)
-  1. [`filesystem_interaction.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/filesystem_interaction.ipynb):
+  1. `filesystem_interaction.ipynb`
+     [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/filesystem_interaction.ipynb): 
      illustrates how to work with the file system.
-  1. [`shell_interaction.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/shell_interaction.ipynb):
+  1. `shell_interaction.ipynb`
+     [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/shell_interaction.ipynb): 
      illustrates the use of the `sh` and
      `subprocess` modules to interact with the shell.
   1. [`julia.ipynb`](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/julia.ipynb):
