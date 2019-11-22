@@ -103,5 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# editor backup file
+# editor backup files
 *~
+*.swp
+*.bak
+~$scientific_python.pptx
