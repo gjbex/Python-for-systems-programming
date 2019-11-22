@@ -2,7 +2,9 @@ name: python_for_systems_programming
 channels:
   - defaults
 dependencies:
+  - fabric
   - jinja2
+  - jupyter
   - matplotlib
   - numpy
   - paramiko
