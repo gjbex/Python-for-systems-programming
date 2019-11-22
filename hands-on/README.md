@@ -30,7 +30,7 @@ Jupyter notebooks:
      retrieve information from the operating system
   1.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/gjbex/Python-for-systems-programming/blob/master/hands-on/filesystem_interaction.ipynb) [`filesystem_interaction.ipynb`](filesystem_interaction.ipynb): 
      illustrates how to work with the file system.
-  1.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/shell_interaction.ipynb) [`shell_interaction.ipynb`](shell_interaction.ipynb): 
+  1.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/Python-for-systems-programming/blob/master/nands-on/shell_interaction.ipynb) [`shell_interaction.ipynb`](shell_interaction.ipynb): 
      illustrates the use of the `sh` and
      `subprocess` modules to interact with the shell.
   1.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/julia.ipynb) [`julia.ipynb`](julia.ipynb): 
