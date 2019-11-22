@@ -25,10 +25,10 @@ Subjects and Python modules that will be covered:
 
 Jupyter notebooks:
 
-  1. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/Python-for-system-programming/tree/master/hands-on/system_information.ipynb) [`system_information.ipynb`](system_information.ipynb):
+  1. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/gjbex/Python-for-systems-programming/blob/master/hands-on/system_information.ipynb) [`system_information.ipynb`](system_information.ipynb):
      illustrates how to use several standard library modules to
      retrieve information from the operating system
-  1.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/filesystem_interaction.ipynb) [`filesystem_interaction.ipynb`](filesystem_interaction.ipynb): 
+  1.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/gjbex/Python-for-systems-programming/blob/master/hands-on/filesystem_interaction.ipynb) [`filesystem_interaction.ipynb`](filesystem_interaction.ipynb): 
      illustrates how to work with the file system.
   1.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gjbex/PythonSysProg/blob/master/shell_interaction.ipynb) [`shell_interaction.ipynb`](shell_interaction.ipynb): 
      illustrates the use of the `sh` and
