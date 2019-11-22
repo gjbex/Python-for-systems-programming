@@ -1,0 +1,11 @@
+name: python_for_systems_programming
+channels:
+  - defaults
+dependencies:
+  - jinja2
+  - matplotlib
+  - numpy
+  - paramiko
+  - psutil
+  - python=3.7.5
+  - sh
