@@ -7,6 +7,7 @@ It support configuration file handling, command line arguments, logging,
 multiruns and so on.
 
 ## What is it?
+
 1. `gen_rand.py`: Python script to write random numbers to standard
    output.
 1. `conf/`: directory containing the configuration files.

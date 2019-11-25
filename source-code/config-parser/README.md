@@ -1,11 +1,10 @@
-ConfigParser
-============
+# ConfigParser
 
 ConfigParser is a module in Python's standard library to handle
 configuration files easily.
 
-What is it?
------------
+## What is it?
+
 1. `config_reader.py`: reads a configuration file provided on the command
    line, or `default.conf`.  It prints the sections of the configuration
    files, and the key/value pairs defined therein.

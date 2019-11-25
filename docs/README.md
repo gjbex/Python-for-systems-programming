@@ -1,9 +1,9 @@
-The Python programming language is increasingly popular.  It is a
-versatile language for general purpose programming and accessible
-for novice programmers.  For more than a decade, Python has been
-used for a large number of systems-related programming tasks.
+Python is a very versatile programming language that has a wide range of
+applications.  This training concentrates on interaction with the
+operating system, the file system, other applications and the network.
+This is useful for systems programming, but also when you want to use
+Python as a coordination language for your workflows.
 This training introduces modules that are useful in that context.
-
 
 ## Learning outcomes
 
@@ -20,7 +20,7 @@ When you complete this training you will
 
 ## Schedule
 
-Total duration: 3.5 hours.
+Total duration: 4 hours.
 
   | Subject                                     | Duration |
   |---------------------------------------------|----------|
@@ -29,6 +29,7 @@ Total duration: 3.5 hours.
   | logging                                                           | 10 min.  |
   | interacting with the file system                                  | 40 min.  |
   | coffee break                                                      | 10 min.  |
+  | data formats                                                      | 30 min.  |
   | templates                                                         | 10 min.  |
   | interacting with processes                                        | 45 min.  |
   | interacting with remote systems using SSH                         | 30 min.  |

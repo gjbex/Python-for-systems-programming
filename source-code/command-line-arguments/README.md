@@ -1,4 +1,4 @@
-# CommandLineArgs
+# Command line arguments
 
 How to handle command line arguments in Python scripts.
 
