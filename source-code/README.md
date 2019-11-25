@@ -18,6 +18,7 @@ to create it.  There is some material not covered in the presentation as well.
   
 ## What is it?
 
+1. `application`: illustration of how to combine `configparser` and `argparse`.
 1. `cmd`: illustration of how to create a repl application.
 1. `code-evaluation`: illustrates how to evaluate a string containing
     Python code at runtime.
