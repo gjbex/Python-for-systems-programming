@@ -29,6 +29,7 @@ to create it.  There is some material not covered in the presentation as well.
 1. `data-formats`: illustrates how to deal with data formats such as CSV
     files, binary data and XML.
 1. `hydra`: Facebook Hydra application framework illustration.
+1. `jinja`: illustration of how to use the jinja2 template library.
 1. `logging`: illustration of Python's logging facilities.
 1. `file-system`: illustrations of interacting with the operating system
     and the file system.
