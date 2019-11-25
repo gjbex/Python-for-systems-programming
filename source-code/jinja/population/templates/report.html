@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Report</title>
+    </head>
+    <body>
+        <h1>Report on people</h1>
+
+        <table>
+            <tr>
+                <th>Person ID</th>
+                <th>year of birth</th>
+                <th>number of friends</th>
+            </tr>
+            {% for person in people %}
+            <tr>
+                <td> {{ person['id'] }} </td>
+                <td> {{ person['birthyear'] }} </td>
+                <td> {{ person['nr_friends'] }} </td>
+            <tr>
+            {% endfor %}          
+        </table>
+    </body>
+</html>
