@@ -14,7 +14,7 @@ def gen_rand(cfg):
     if cfg.n <= 0:
         LOG.error(f'negative number to generate {cfg.n}')
         return 1
-    LOG.info(f'genrating {cfg.n} random numbers')
+    LOG.info(f'generating {cfg.n} random numbers')
     LOG.info(f'using {cfg.distr.name} distribution')
     if cfg.distr.name == 'gauss':
         LOG.info(f'mu={cfg.distr.mu}, sigma={cfg.distr.sigma}')
