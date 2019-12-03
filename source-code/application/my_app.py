@@ -11,7 +11,7 @@ def generate_data(n, a=0, b=1):
     return [random.randint(a, b) for _ in range(n)]
 
 def main():
-    arg_parser = ArgumentParser(description='test application')
+    arg_parser = ArgumentParser(add_help=False)
     arg_parser.add_argument('--conf',
                             help='configuration file to use')
     arg_parser.add_argument('--verbose', action='store_true',
@@ -36,12 +36,14 @@ def main():
             print('user configuration file values:', file=sys.stderr)
             cfg.write(sys.stderr)
     cfg_opts = dict(cfg['defaults'])
-    arg_parser.set_defaults(**cfg_opts)
-    arg_parser.add_argument('n', type=int, nargs='?',
-                            help='number of random values to generate')
-    arg_parser.add_argument('--a', type=int, help='smallest value')
-    arg_parser.add_argument('--b', type=int, help='largest value')
-    arg_parser.parse_args(remaining_options, options)
+    arg_parser_cl = ArgumentParser(description='test application',
+                                   parents=[arg_parser])
+    arg_parser_cl.set_defaults(**cfg_opts)
+    arg_parser_cl.add_argument('n', type=int, nargs='?',
+                               help='number of random values to generate')
+    arg_parser_cl.add_argument('--a', type=int, help='smallest value')
+    arg_parser_cl.add_argument('--b', type=int, help='largest value')
+    arg_parser_cl.parse_args(remaining_options, options)
     if options.verbose:
         print('final options:', file=sys.stderr)
         print(f'n = {options.n}\na = {options.a}\nb = {options.b}', end='\n\n',
