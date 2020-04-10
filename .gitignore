@@ -109,3 +109,6 @@ venv.bak/
 *.bak
 ~$scientific_python.pptx
 ~$python_for_systems_programming.pptx
+
+# add direnv configuration file
+.envrc
