@@ -140,7 +140,7 @@ def get_filename_suffix(file_id):
 
 
 def get_filename(file_id):
-    return platform.node() + suffix + get_filename_suffix(file_id)
+    return platform.node() + get_filename_suffix(file_id)
 
 
 def main():
