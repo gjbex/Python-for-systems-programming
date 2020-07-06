@@ -20,7 +20,7 @@ class Metric:
 
     @property
     def name(self):
-        return name
+        return self.name
 
     def measure(self, process):
         return str(self._action(process))
