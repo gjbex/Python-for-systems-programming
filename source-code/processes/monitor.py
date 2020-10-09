@@ -39,7 +39,7 @@ def get_username():
 
 
 def find_ancestor(pid=None, username=None):
-    '''Find the anceestor of the process with ID pid thatis owned by the user with
+    '''Find the ancestor of the process with ID pid thatis owned by the user with
     the given user name'''
     if pid is not None and not psutil.pid_exists(pid):
         raise ValueError(f'PID {pid} does not exist')
