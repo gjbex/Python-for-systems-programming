@@ -38,7 +38,7 @@ to create it.  There is some material not covered in the presentation as well.
 1. `paramiko`: a few examples of using the Paramiko library for SSH
     to remote hosts.
 1. `processes`: examples of how to work with processes.
-1. `sched`: scheduled execution of funcitons in Python.
+1. `sched`: scheduled execution of functions in Python.
 1. `subprocess`: illustrates executing a shell command from a Python script
     using the `subprocess` module.
 1. `xml-generator`: code to generate a random XML documents.
