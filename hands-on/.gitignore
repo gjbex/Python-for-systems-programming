@@ -1,3 +1,6 @@
+# tmp directory created by notebook
+tmp/
+
 # file artefacts
 julia.txt
 julia.exe
