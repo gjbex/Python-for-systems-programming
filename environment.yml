@@ -11,3 +11,5 @@ dependencies:
   - psutil
   - python=3.7.5
   - sh
+  pip:
+    - schedule
