@@ -13,8 +13,7 @@ if __name__ == '__main__':
                             help='user name to connect as')
     options = arg_parser.parse_args()
     ssh = ssh.connect(options.host, options.user)
-    module_func_defs = '. /apps/leuven/etc/bash.bashrc'
-    cmd = '{0}; module load accounting; gbalance'.format(module_func_defs)
+    cmd = '/opt/mam/bin/mam-balance'
     _, stdout, stderr = ssh.exec_command(cmd)
     for line in stdout:
         print(line.rstrip())

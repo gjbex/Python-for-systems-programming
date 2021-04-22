@@ -14,9 +14,8 @@ if __name__ == '__main__':
     arg_parser.add_argument('module', help='module to query for')
     options = arg_parser.parse_args()
     ssh = ssh.connect(options.host, options.user)
-    module_func_defs = '. /apps/leuven/etc/bash.bashrc; . switch_to_2015a'
-    cmd = '{0}; module av {1}'.format(module_func_defs, options.module)
-    _, stdout, stderr = ssh.exec_command(cmd)
+    cmd = f'bash -l -c module av {options.module};'
+    _, stdout, stderr = ssh.exec_command(cmd, get_pty=True)
     for line in stdout:
         print(line.rstrip())
     for line in stderr:
