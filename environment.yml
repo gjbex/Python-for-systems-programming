@@ -2,14 +2,14 @@ name: python_for_systems_programming
 channels:
   - defaults
 dependencies:
-  - fabric
-  - jinja2
-  - jupyter
-  - matplotlib
-  - numpy
   - paramiko
+  - matplotlib
+  - jinja2
   - psutil
-  - python=3.7.5
   - sh
-  pip:
-    - schedule
+  - fabric
+  - numpy
+  - jupyterlab
+pip:
+  - schedule
+prefix: /home/gjb/miniconda3/envs/python_for_systems_programming
