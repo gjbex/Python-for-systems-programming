@@ -28,6 +28,8 @@ to create it.  There is some material not covered in the presentation as well.
     configuration files.
 1. `data-formats`: illustrates how to deal with data formats such as CSV
     files, binary data and XML.
+1. `directory-entrypoint`: illustrates how to define an application entry point in
+   a directory.
 1. `enviroment-variables`: illustrates how to use environment variables to set paths
    in a script.
 1. `hydra`: Facebook Hydra application framework illustration.

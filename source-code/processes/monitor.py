@@ -50,6 +50,7 @@ def find_ancestor(pid=None, username=None):
     for parent in reversed(parents):
         if parent.username() == username:
             return parent
+    return process
 
 
 def get_cmdline(process):
@@ -128,21 +129,6 @@ def process_status(process, metrics):
     return ','.join(status)
 
 
-def get_filename_suffix(file_id):
-    filename = ''
-    if 'PBS_JOBID' in os.environ:
-        filename += f'_{os.environ["PBS_JOBID"]}'
-    if 'PBS_ARRAYID' in os.environ:
-        filename += f'_{os.environ["PBS_ARRAYJOBID"]}'
-    if file_id:
-        filename += f'_{file_id}'
-    return f'{filename}.txt'
-
-
-def get_filename(file_id):
-    return platform.node() + get_filename_suffix(file_id)
-
-
 def main():
     arg_parser = ArgumentParser(description='monitor processes')
     arg_parser.add_argument('--pid', type=int, help='parent process ID ot monitor')
@@ -152,13 +138,14 @@ def main():
     arg_parser.add_argument('--affinity', action='store_true',
                             help='monitor process affinity')
     arg_parser.add_argument('--files', action='store_true', help='monitor poen files')
-    output_group = arg_parser.add_mutually_exclusive_group()
-    output_group.add_argument('--output-file', help='name of file to store informatoin')
-    output_group.add_argument('--stdout', action='store_true',
-                              help='output to standard output')
-    output_group.add_argument('--file_id', help='identification string for output filename')
+    arg_parser.add_argument('--ancestor', action='store_true',
+                            help='search for ancestor owned by use and report on all its decendants')
+    arg_parser.add_argument('--output-file', help='name of file to store informatoin')
     options = arg_parser.parse_args()
-    ancestor = find_ancestor(options.pid, options.user)
+    if options.ancestor:
+        process = find_ancestor(options.pid, options.user)
+    else:
+        process = psutil.Process(options.pid)
     inactive = []
     if not options.affinity:
         inactive.append('affinity')
@@ -166,19 +153,17 @@ def main():
         inactive.append('read_files')
         inactive.append('write_files')
     metrics = define_actions(inactive)
-    if options.stdout:
-        file = sys.stdout
-    elif options.output_file:
+    if options.output_file:
         file = open(options.output_file, 'w')
     else:
-        file = open(get_filename(options.file_id), 'w')
+        file = sys.stdout
     try:
         with file:
             print(status_header(metrics), file=file)
             while True:
-                process_info = [process_status(ancestor, metrics)]
-                for process in ancestor.children(recursive=True):
-                    process_info.append(process_status(process, metrics))
+                process_info = [process_status(process, metrics)]
+                for child_process in process.children(recursive=True):
+                    process_info.append(process_status(child_process, metrics))
                 print('\n'.join(process_info), file=file)
                 time.sleep(options.delta)
     except KeyboardInterrupt:
