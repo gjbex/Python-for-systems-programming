@@ -1,7 +1,8 @@
 #!/usr/bin/env python
+
 import fire
-import calculations
+import log_operations
 
 
 if __name__ == '__main__':
-    fire.Fire(calculations)
+    fire.Fire(log_operations)
