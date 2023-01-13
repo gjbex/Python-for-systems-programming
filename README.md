@@ -1,4 +1,4 @@
-# Python for systems rogramming
+# Python for systems programming
 
 GitHub repository for participants of the "Python for systems programming" training.
 For information on the training, see the website
