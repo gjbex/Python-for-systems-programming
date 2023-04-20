@@ -24,8 +24,7 @@ class Block(object):
         self._data.sort()
 
     def __str__(self):
-        return '\n'.join(['{0}: {1}'.format(self.name, x)
-                          for x in self._data])
+        return '\n'.join([f'{self.name}: {value}' for value in self._data])
 
 
 class BlocksHandler(ContentHandler):
@@ -54,10 +53,8 @@ class BlocksHandler(ContentHandler):
 
     def startElement(self, name, attrs):
         if name == 'block':
-            logging.info('start of {0}'.format(attrs.getValue('name')))
-            parent_name = ''
-            if self._stack:
-                parent_name = self._stack[-1].name + '/'
+            logging.info(f'start of {attrs.getValue("name")}')
+            parent_name = f'{self._stack[-1].name}/' if self._stack else ''
             block = Block(parent_name + attrs.getValue('name'))
             self._stack.append(block)
         elif name == 'item':
@@ -68,7 +65,7 @@ class BlocksHandler(ContentHandler):
             contents = contents.strip()
             if contents:
                 data = float(contents.strip())
-                logging.info("found '{0}'".format(data))
+                logging.info(f"found '{data}'")
                 self._stack[-1].add_data(data)
 
     def endElement(self, name):
@@ -76,7 +73,7 @@ class BlocksHandler(ContentHandler):
             block = self._stack.pop()
             block.finish()
             self._blocks.append(block)
-            logging.info('end of {0}'.format(block.name))
+            logging.info(f'end of {block.name}')
         elif name == 'item':
             self.in_item = False
 
@@ -86,7 +83,7 @@ class BlocksHandler(ContentHandler):
 
 def main():
     arg_parser = ArgumentParser(description='reformat XML code')
-    arg_parser.add_argument('-verbose', action='store_true',
+    arg_parser.add_argument('--verbose', action='store_true',
                             help='print verbose output')
     arg_parser.add_argument('file', type=FileType('r'),
                             help='XML file to convert')
