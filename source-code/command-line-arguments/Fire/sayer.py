@@ -55,7 +55,7 @@ class Sayer:
         self.bye =  Bye(bye_name)
 
     def to(self):
-        return 'Do you want to say hello or bye'
+        return 'Do you want to say hello or bye?'
 
     def info(self):
         return 'This is version 0.1beta'
