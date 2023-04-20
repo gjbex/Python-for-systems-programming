@@ -3,30 +3,30 @@
 from argparse import ArgumentParser
 import logging
 import math
-import os
+from pathlib import Path
 import sys
 
 
 def do_stuff(n):
     if n < 0:
-        logging.error('can not do stuff for {0}'.format(n))
+        logging.error(f'can not do stuff for {n}')
         return 1
     for i in range(n):
-        logging.info('doing stuff {0}'.format(str(i)))
-        print('doing {0}: {1:.4f}'.format(i, math.sqrt(i)))
-        logging.info('done stuff {0}'.format(str(i)))
+        logging.info(f'doing stuff {i}')
+        print(f'doing {i}: {math.sqrt(i):.4f}')
+        logging.info(f'done stuff {i}')
     return 0
 
 
 def main():
     arg_parser = ArgumentParser(description='example for logging facility')
-    arg_parser.add_argument('-log', dest='log_file',
+    arg_parser.add_argument('--log', dest='log_file',
                             help='name of log file')
-    arg_parser.add_argument('-info', action='store_true',
+    arg_parser.add_argument('--info', action='store_true',
                             help='set log level to info')
-    arg_parser.add_argument('-new_log', action='store_true',
+    arg_parser.add_argument('--new_log', action='store_true',
                             help='overwrite existing log file')
-    arg_parser.add_argument('-n', type=int, default=1,
+    arg_parser.add_argument('--n', type=int, default=1,
                             help='number of times to do stuff')
     options = arg_parser.parse_args()
     format_str = '%(asctime)s:%(levelname)s:%(message)s'
@@ -39,14 +39,15 @@ def main():
     else:
         filemode = 'a'
     if options.log_file:
-        exists = os.path.exists(options.log_file)
+        log_file = Path(options.log_file)
+        exists = log_file.exists()
         logging.basicConfig(level=level, filename=options.log_file,
                             filemode=filemode, format=format_str)
     else:
         exists = False
         logging.basicConfig(level=level, format=format_str)
     if exists:
-        logging.warn('overwriting existing log file')
+        logging.warning('overwriting existing log file')
     logging.info('application started')
     logging.info('logger initialized')
     status = do_stuff(options.n)
