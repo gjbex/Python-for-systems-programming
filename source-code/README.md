@@ -44,3 +44,4 @@ to create it.  There is some material not covered in the presentation as well.
 1. `subprocess`: illustrates executing a shell command from a Python script
     using the `subprocess` module.
 1. `xml-generator`: code to generate a random XML documents.
+1. `fastapi`: simple illustrations of using FastAPI for webservices.

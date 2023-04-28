@@ -1,6 +1,6 @@
 name: python_for_systems_programming
 channels:
-  - defaults
+  - conda-forge
 dependencies:
   - paramiko
   - matplotlib
@@ -10,6 +10,10 @@ dependencies:
   - fabric
   - numpy
   - jupyterlab
-pip:
-  - schedule
-prefix: /home/gjb/miniconda3/envs/python_for_systems_programming
+  - uvicorn
+  - ca-certificates
+  - certifi
+  - openssl
+  - fastapi
+  - fire
+prefix: /home/gjb/mambaforge/envs/python_for_systems_programming
