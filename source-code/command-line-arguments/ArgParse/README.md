@@ -23,3 +23,4 @@ $ ./generate_gaussian.py -h
    ./options_in_file.py --foo something @file_options.txt
    ```
 1. `file_options.txt`: file containing options for `options_in_file.py`.
+1. `Rerun`: experiment with file options.
