@@ -23,8 +23,7 @@ def execute(cmd, result):
     for stderr_line in iter(process.stderr.readline, ''):
         yield stderr_line.strip()
     stdout, stderr = process.communicate()
-    return_code = process.wait()
-    if return_code:
+    if return_code := process.wait():
         raise subprocess.CalledProcessError(return_code, cmd)
     else:
         result.set(stdout)

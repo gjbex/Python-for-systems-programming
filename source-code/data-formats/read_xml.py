@@ -62,8 +62,7 @@ class BlocksHandler(ContentHandler):
 
     def characters(self, contents):
         if self.in_item:
-            contents = contents.strip()
-            if contents:
+            if contents := contents.strip():
                 data = float(contents.strip())
                 logging.info(f"found '{data}'")
                 self._stack[-1].add_data(data)
