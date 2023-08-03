@@ -9,12 +9,11 @@ import sys
 
 
 def generate_person():
-    person = {
-        'id':  ''.join(random.choices(string.ascii_letters, k=5)),
+    return {
+        'id': ''.join(random.choices(string.ascii_letters, k=5)),
         'birthyear': random.randint(1950, 2015),
         'nr_friends': random.randint(0, 50),
     }
-    return person
 
 def main():
     arg_parser = ArgumentParser(description='generate random people')
@@ -29,7 +28,7 @@ def main():
     people = [generate_person() for _ in range(options.n)]
     environment = Environment(loader=PackageLoader('population', 'templates'),
                               trim_blocks=True, lstrip_blocks=True)
-    template = environment.get_template('report.' + options.format)
+    template = environment.get_template(f'report.{options.format}')
     print(template.render(people=people))
 
 if __name__ == '__main__':
