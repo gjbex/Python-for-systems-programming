@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-import fire
+
 import calculations
+import fire
 
 
 if __name__ == '__main__':
