@@ -10,3 +10,5 @@ applications with a command line interface.
 1. `sayer.py`: Illustration of grouped commands.
 1. `cl_logger.py`/`log_management.py`/`log_operations.py`: logging
    from the command line example.
+1. `job.py`: simple class definition to explore interacting with
+   objects from the CLI.
