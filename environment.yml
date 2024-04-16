@@ -2,6 +2,7 @@ name: python_for_systems_programming
 channels:
   - conda-forge
 dependencies:
+  - click
   - paramiko
   - matplotlib
   - jinja2
