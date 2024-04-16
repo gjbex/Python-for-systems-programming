@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from argparse import ArgumentParser
-from subprocess import check_output, CalledProcessError, STDOUT
+import subprocess
 
 
 class WcInfo:
@@ -58,11 +58,12 @@ def main():
     args = arg_parser.parse_args()
     for f in args.files:
         try:
-            stats = check_output(['wc', f], stderr=STDOUT)
-            wc_info = WcInfo(stats.decode(encoding='utf-8'))
+            stats = subprocess.run(['wc', f], capture_output=True,
+                                   text=True, check=True)
+            wc_info = WcInfo(stats.stdout)
             print(wc_info)
             print(compute_stats(wc_info))
-        except CalledProcessError as e:
+        except subprocess.CalledProcessError as e:
             print(e)
 
 if __name__ == '__main__':
