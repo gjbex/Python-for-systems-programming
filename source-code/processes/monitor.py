@@ -47,10 +47,14 @@ def find_ancestor(pid=None, username=None):
         username = get_username()
     process = psutil.Process(pid)
     parents = process.parents()
-    for parent in reversed(parents):
-        if parent.username() == username:
-            return parent
-    return process
+    return next(
+        (
+            parent
+            for parent in reversed(parents)
+            if parent.username() == username
+        ),
+        process,
+    )
 
 
 def get_cmdline(process):
@@ -63,11 +67,11 @@ def get_affinity(process):
 
 
 def get_read_open_files(process):
-    open_files = list()
+    open_files = []
     try:
         for file in process.open_files():
             try:
-                if 'r' == file.mode:
+                if file.mode == 'r':
                     open_files.append(file.path)
             except:
                 pass
@@ -77,11 +81,11 @@ def get_read_open_files(process):
 
 
 def get_write_open_files(process):
-    open_files = list()
+    open_files = []
     try:
         for file in process.open_files():
             try:
-                if 'r' != file.mode:
+                if file.mode != 'r':
                     open_files.append(f'{file.path}:{Path(file.path).stat().st_size}')
             except:
                 pass
@@ -91,8 +95,7 @@ def get_write_open_files(process):
 
 
 def define_actions(inactive=None):
-    metrics = dict()
-    metrics['time'] = Metric('time', lambda x: time.time())
+    metrics = {'time': Metric('time', lambda x: time.time())}
     metrics['node'] = Metric('node', lambda x: platform.node())
     metrics['pid'] = Metric('pid', lambda x: x.pid)
     metrics['ppid'] = Metric('ppid', lambda x: x.ppid())
@@ -121,11 +124,13 @@ def status_header(metrics):
 
 def process_status(process, metrics):
     '''Show properties of the specified process'''
-    status = list()
+    status = []
     with process.oneshot():
-        for metric in metrics.values():
-            if metric.is_active:
-                status.append(metric.measure(process))
+        status.extend(
+            metric.measure(process)
+            for metric in metrics.values()
+            if metric.is_active
+        )
     return ','.join(status)
 
 
@@ -150,20 +155,18 @@ def main():
     if not options.affinity:
         inactive.append('affinity')
     if not options.files:
-        inactive.append('read_files')
-        inactive.append('write_files')
+        inactive.extend(('read_files', 'write_files'))
     metrics = define_actions(inactive)
-    if options.output_file:
-        file = open(options.output_file, 'w')
-    else:
-        file = sys.stdout
+    file = open(options.output_file, 'w') if options.output_file else sys.stdout
     try:
         with file:
             print(status_header(metrics), file=file)
             while True:
                 process_info = [process_status(process, metrics)]
-                for child_process in process.children(recursive=True):
-                    process_info.append(process_status(child_process, metrics))
+                process_info.extend(
+                    process_status(child_process, metrics)
+                    for child_process in process.children(recursive=True)
+                )
                 print('\n'.join(process_info), file=file)
                 time.sleep(options.delta)
     except KeyboardInterrupt:

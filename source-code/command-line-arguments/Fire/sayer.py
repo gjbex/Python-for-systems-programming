@@ -12,13 +12,12 @@ class Hello:
         self.name = name
 
     def to(self, name=None):
-        if name is None:
-            if self.name is None:
-                return 'No one to say hello to'
-            else:
-                return f'Hello to {self.name}'
-        else:
+        if name is not None:
             return f'Hello {name}'
+        if self.name is None:
+            return 'No one to say hello to'
+        else:
+            return f'Hello to {self.name}'
 
     def everyone(self):
         return 'hello to everyone'
@@ -34,15 +33,12 @@ class Bye:
 
     def to(self, name=None):
         if name is None:
-            if self.name is None:
-                return 'No one to say bye to'
-            else:
-                return f'Bye to {self.name}'
+            return 'No one to say bye to' if self.name is None else f'Bye to {self.name}'
         else:
             return f'Bye {name}'
 
     def no_one(self):
-        return f'Bye to no one'
+        return 'Bye to no one'
 
 
 class Sayer:
