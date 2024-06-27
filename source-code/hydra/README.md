@@ -14,6 +14,8 @@ multiruns and so on.
    1. `config.yaml`: configuration file with the defaults.
    1. `distr/gauss.yaml`: configuration file for the Gaussian distirubtion.
    1. `distr/uniform.yaml`: configuration file for the uniform distirubtion.
+1. `debug.py`: Python script that simply prints the configuration settings for
+   debugging purposes.
 
 ## How to use it?
 Run with configuratino file settings:
