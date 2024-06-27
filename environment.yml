@@ -17,4 +17,5 @@ dependencies:
   - openssl
   - fastapi
   - fire
+  - hydra-core
 prefix: /home/gjb/mambaforge/envs/python_for_systems_programming
