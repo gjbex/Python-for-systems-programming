@@ -6,6 +6,7 @@ in the context of scientific software.
 It support configuration file handling, command line arguments, logging,
 multiruns and so on.
 
+
 ## What is it?
 
 1. `gen_rand.py`: Python script to write random numbers to standard
@@ -17,6 +18,7 @@ multiruns and so on.
 1. `debug.py`: Python script that simply prints the configuration settings for
    debugging purposes.
 
+
 ## How to use it?
 Run with configuratino file settings:
 ```bash
@@ -24,7 +26,7 @@ $ ./gen_rand.py
 ```
 To increase the number of random values:
 ```bash
-$ ./gen_rand.py 10
+$ ./gen_rand.py n=10
 ```
 
 To use a uniform distribution:
