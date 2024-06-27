@@ -1,4 +1,5 @@
 verbose: False
 n: 1
 defaults:
-    - distr: gauss
+  - distr: gauss
+  - _self_

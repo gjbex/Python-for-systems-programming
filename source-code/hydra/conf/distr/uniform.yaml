@@ -1,4 +1,3 @@
-distr:
-    name: uniform
-    a: 0.0
-    b: 1.0
+name: uniform
+a: 0.0
+b: 1.0

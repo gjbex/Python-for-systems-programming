@@ -7,7 +7,7 @@ import sys
 
 LOG = logging.getLogger(sys.argv[0])
 
-@hydra.main(config_path='conf/config.yaml')
+@hydra.main(version_base=None, config_path='conf/', config_name='config')
 def gen_rand(cfg):
     if cfg.verbose:
         print(cfg.pretty(), file=sys.stderr)
