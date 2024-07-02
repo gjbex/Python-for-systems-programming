@@ -15,6 +15,7 @@ multiruns and so on.
    1. `config.yaml`: configuration file with the defaults.
    1. `distr/gauss.yaml`: configuration file for the Gaussian distirubtion.
    1. `distr/uniform.yaml`: configuration file for the uniform distirubtion.
+   1. `file_config.yaml`: configuration file with the output file name.
 1. `debug.py`: Python script that simply prints the configuration settings for
    debugging purposes.
 
@@ -38,3 +39,8 @@ To use a uniform distribution between -1 and 0:
 ```bash
 $ ./gen_rand.py distr=uniform distr.a=-1.0 distr.b=0.0
 ```
+
+To use a different configuration file:
+```bash
+$ ./gen_rand.py  -cn file_config.yaml
+``` 
