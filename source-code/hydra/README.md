@@ -44,3 +44,8 @@ To use a different configuration file:
 ```bash
 $ ./gen_rand.py  -cn file_config.yaml
 ``` 
+
+To perform multiple runs with different parameter values:
+```bash
+$ ./gen_rand.py -m distr=uniform,gauss
+``` 
