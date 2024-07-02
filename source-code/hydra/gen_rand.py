@@ -1,42 +1,41 @@
 #!/usr/bin/env python
 
 import hydra
-
 from omegaconf import OmegaConf
 import logging
 import numpy as np
 import sys
 
-LOG = logging.getLogger(sys.argv[0])
 
 @hydra.main(version_base=None, config_path='conf/', config_name='config')
 def gen_rand(cfg):
     if cfg.verbose:
         print(OmegaConf.to_yaml(cfg), file=sys.stderr)
+    logger = logging.getLogger(__name__)
     if cfg.n <= 0:
-        LOG.error(f'negative number to generate {cfg.n}')
-        return 1
-    LOG.info(f'generating {cfg.n} random numbers')
-    LOG.info(f'using {cfg.distr.name} distribution')
+        logger.error(f'negative number to generate {cfg.n}')
+        sys.exit(1)
+    logger.info(f'generating {cfg.n} random numbers')
+    logger.info(f'using {cfg.distr.name} distribution')
     if cfg.distr.name == 'gauss':
-        LOG.info(f'mu={cfg.distr.mu}, sigma={cfg.distr.sigma}')
+        logger.info(f'mu={cfg.distr.mu}, sigma={cfg.distr.sigma}')
         if cfg.distr.sigma <= 0:
-            LOG.error(f'negative standard deviation {cfg.distr.sigma}')
-            return 1
+            logger.error(f'negative standard deviation {cfg.distr.sigma}')
+            sys.exit(1)
         numbers = np.random.normal(loc=cfg.distr.mu, scale=cfg.distr.sigma,
                                    size=(cfg.n,))
     elif cfg.distr.name == 'uniform':
-        LOG.info(f'a={cfg.distr.a}, b={cfg.distr.b}')
+        logger.info(f'a={cfg.distr.a}, b={cfg.distr.b}')
         if cfg.distr.a >= cfg.distr.b:
-            LOG.warning(f'lower bound exceed upper bound, '
+            logger.warning(f'lower bound exceed upper bound, '
                         f'{cfg.distr.a} >= {cfg.distr.b}')
         numbers = np.random.uniform(cfg.distr.a, cfg.distr.b, size=(cfg.n,))
-    LOG.info('starting output')
+    logger.info('starting output')
+    out = open(cfg.file, 'w') if cfg.file else sys.stdout
     for number in numbers:
-        print(number)
-    LOG.info('output done')
+        print(number, file=out)
+    logger.info('output done')
     return 0
 
 if __name__ == '__main__':
-    status = gen_rand()
-    sys.exit(status)
+    gen_rand()
