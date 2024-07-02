@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import hydra
-from omegaconf import OmegaConf
 import logging
 import numpy as np
 import sys
@@ -9,8 +8,6 @@ import sys
 
 @hydra.main(version_base=None, config_path='conf/', config_name='config')
 def gen_rand(cfg):
-    if cfg.verbose:
-        print(OmegaConf.to_yaml(cfg), file=sys.stderr)
     logger = logging.getLogger(__name__)
     if cfg.n <= 0:
         logger.error(f'negative number to generate {cfg.n}')

@@ -1,5 +1,5 @@
-verbose: False
 n: 1
+file: false
 defaults:
   - distr: gauss
   - _self_
