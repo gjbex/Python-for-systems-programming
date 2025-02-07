@@ -158,6 +158,7 @@ def main():
         inactive.extend(('read_files', 'write_files'))
     metrics = define_actions(inactive)
     file = open(options.output_file, 'w') if options.output_file else sys.stdout
+    found_process = False
     try:
         with file:
             print(status_header(metrics), file=file)
@@ -167,10 +168,16 @@ def main():
                     process_status(child_process, metrics)
                     for child_process in process.children(recursive=True)
                 )
-                print('\n'.join(process_info), file=file)
+                print('\n'.join(process_info), file=file, flush=True)
+                found_process = True
                 time.sleep(options.delta)
     except KeyboardInterrupt:
         pass
+    except psutil.NoSuchProcess:
+        if not found_process:
+            print(f'Process {options.pid} does not exist', file=sys.stderr)
+            return 1
+    return 0
 
 
 if __name__ == '__main__':
