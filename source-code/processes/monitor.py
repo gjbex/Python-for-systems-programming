@@ -143,6 +143,7 @@ def main():
     if not options.files:
         inactive.extend(('read_files', 'write_files'))
     metrics = define_actions(inactive)
+    found_process = False
     try:
         with open(options.output_file, 'w') if options.output_file else sys.stdout as file:
             print(status_header(metrics), file=file)
@@ -157,11 +158,13 @@ def main():
                     print('Zombie process encountered', file=sys.stderr)
                 print('\n'.join(process_info), file=file)
                 time.sleep(options.delta)
-    except psutil.NoSuchProcess:
-        # the process has terminated, but this is to be expected
-        pass
     except KeyboardInterrupt:
         pass
+    except psutil.NoSuchProcess:
+        if not found_process:
+            print(f'Process {options.pid} does not exist', file=sys.stderr)
+            return 1
+    return 0
 
 
 if __name__ == '__main__':
