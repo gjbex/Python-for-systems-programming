@@ -1,0 +1,8 @@
+hydra:
+  job:
+    chdir: true
+n: 1
+file: output.txt
+defaults:
+  - distr: gauss
+  - _self_

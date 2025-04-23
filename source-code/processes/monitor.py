@@ -20,7 +20,7 @@ class Metric:
 
     @property
     def name(self):
-        return self.name
+        return self._name
 
     def measure(self, process):
         return str(self._action(process))
@@ -67,30 +67,12 @@ def get_affinity(process):
 
 
 def get_read_open_files(process):
-    open_files = []
-    try:
-        for file in process.open_files():
-            try:
-                if file.mode == 'r':
-                    open_files.append(file.path)
-            except:
-                pass
-    except:
-        pass
+    open_files = [file.path for file in process.open_files() if file.mode == 'r']
     return ';'.join(open_files)
 
 
 def get_write_open_files(process):
-    open_files = []
-    try:
-        for file in process.open_files():
-            try:
-                if file.mode != 'r':
-                    open_files.append(f'{file.path}:{Path(file.path).stat().st_size}')
-            except:
-                pass
-    except:
-        pass
+    open_files = [file.path for file in process.open_files() if file.mode != 'r']
     return ';'.join(open_files)
 
 
@@ -106,7 +88,6 @@ def define_actions(inactive=None):
     metrics['cpu_user'] = Metric('cpu_user', lambda x: x.cpu_times().user)
     metrics['cpu_sys'] = Metric('cpu_sys', lambda x: x.cpu_times().system)
     metrics['num_threads'] = Metric('num_threads', lambda x: x.num_threads())
-    metrics['mem_perpent'] = Metric('mem_perpent', lambda x: f'{x.cpu_percent():.2f}')
     metrics['mem'] = Metric('mem', lambda x: x.memory_full_info().uss)
     metrics['affinity'] = Metric('affinity', lambda x: get_affinity(x))
     metrics['read_files'] = Metric('read_files', lambda x: get_read_open_files(x))
@@ -136,41 +117,54 @@ def process_status(process, metrics):
 
 def main():
     arg_parser = ArgumentParser(description='monitor processes')
-    arg_parser.add_argument('--pid', type=int, help='parent process ID ot monitor')
+    arg_parser.add_argument('--pid', type=int, required=True,
+                            help='parent process ID to monitor')
     arg_parser.add_argument('--user', help='user of the processes to monitor')
     arg_parser.add_argument('--delta', type=float, default=60.0,
                             help='number of seconds between measurements')
     arg_parser.add_argument('--affinity', action='store_true',
                             help='monitor process affinity')
-    arg_parser.add_argument('--files', action='store_true', help='monitor poen files')
+    arg_parser.add_argument('--files', action='store_true', help='monitor open files')
     arg_parser.add_argument('--ancestor', action='store_true',
-                            help='search for ancestor owned by use and report on all its decendants')
-    arg_parser.add_argument('--output-file', help='name of file to store informatoin')
+                            help='search for ancestor process owned by user and report on all its decendants')
+    arg_parser.add_argument('--output-file', help='name of file to store information')
     options = arg_parser.parse_args()
-    if options.ancestor:
-        process = find_ancestor(options.pid, options.user)
-    else:
-        process = psutil.Process(options.pid)
+    try:
+        if options.ancestor:
+            process = find_ancestor(options.pid, options.user)
+        else:
+            process = psutil.Process(options.pid)
+    except psutil.NoSuchProcess:
+        print(f'Process {options.pid} does not exist', file=sys.stderr)
+        return 1
     inactive = []
     if not options.affinity:
         inactive.append('affinity')
     if not options.files:
         inactive.extend(('read_files', 'write_files'))
     metrics = define_actions(inactive)
-    file = open(options.output_file, 'w') if options.output_file else sys.stdout
+    found_process = False
     try:
-        with file:
+        with open(options.output_file, 'w') if options.output_file else sys.stdout as file:
             print(status_header(metrics), file=file)
             while True:
                 process_info = [process_status(process, metrics)]
-                process_info.extend(
-                    process_status(child_process, metrics)
-                    for child_process in process.children(recursive=True)
-                )
+                try:
+                    process_info.extend(
+                        process_status(child_process, metrics)
+                        for child_process in process.children(recursive=True)
+                    )
+                except psutil.ZombieProcess:
+                    print('Zombie process encountered', file=sys.stderr)
                 print('\n'.join(process_info), file=file)
                 time.sleep(options.delta)
     except KeyboardInterrupt:
         pass
+    except psutil.NoSuchProcess:
+        if not found_process:
+            print(f'Process {options.pid} does not exist', file=sys.stderr)
+            return 1
+    return 0
 
 
 if __name__ == '__main__':
