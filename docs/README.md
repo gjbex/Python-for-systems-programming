@@ -59,7 +59,7 @@ If you plan to do Python programming in a Linux or HPC environment you should
 be familiar with these as well.
 
 
-## Levels
+## Level
 
 * Introductory: 20 %
 * Intermediate: 70 %
