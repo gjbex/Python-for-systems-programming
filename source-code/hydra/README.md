@@ -51,6 +51,14 @@ or
 $ ./gen_rand.py  --config-name=file_config.yaml
 ```
 
+Application logging is configured through Hydra in
+`conf/hydra/job_logging/custom.yaml`.  The script still uses Python's
+`logging.getLogger(__name__)`, but formatting and log level are controlled
+from configuration.  For example, to change the root log level:
+```bash
+$ ./gen_rand.py  hydra.job_logging.root.level=DEBUG
+```
+
 To perform multiple runs with different parameter values:
 ```bash
 $ ./gen_rand.py -m distr=uniform,gauss
