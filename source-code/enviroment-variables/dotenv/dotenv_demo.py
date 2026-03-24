@@ -17,7 +17,7 @@ def main():
     secret_key = os.getenv('MY_SECRET')
 
     if secret_key:
-        print(f'MY_SECRET_KEY: {secret_key}')
+        print(f'MY_SECRET: {secret_key}')
     else:
         print('MY_SECRET not found in environment variables.')
 
