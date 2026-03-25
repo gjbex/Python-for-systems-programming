@@ -1,0 +1,7 @@
+name: asyncssh
+channels:
+  - conda-forge
+dependencies:
+  - asyncssh
+
+prefix: "/home/gjb/mambaforge/envs/asyncssh"

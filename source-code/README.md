@@ -3,18 +3,6 @@
 This is source code that is either used in the presentation, or was developed
 to create it.  There is some material not covered in the presentation as well.
 
-## Requirements
-
-* Python version: at least 3.6
-* Packages (names listed that can be used with `pip` or `conda` to install):
-  * jinja2
-  * jupyter
-  * matplotlib
-  * numpy
-  * paramiko
-  * psutil
-  * python=3.7.5
-  * sh
   
 ## What is it?
 
@@ -37,7 +25,7 @@ to create it.  There is some material not covered in the presentation as well.
 1. `logging`: illustration of Python's logging facilities.
 1. `file-system`: illustrations of interacting with the operating system
     and the file system.
-1. `paramiko`: a few examples of using the Paramiko library for SSH
+1. `asyncssh`: a few examples of using the AsyncSSH library for SSH
     to remote hosts.
 1. `processes`: examples of how to work with processes.
 1. `sched`: scheduled execution of functions in Python.
