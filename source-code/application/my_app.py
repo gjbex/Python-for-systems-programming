@@ -16,9 +16,16 @@ def main():
                             help='configuration file to use')
     arg_parser.add_argument('--verbose', action='store_true',
                             help='verbose output')
+    arg_parser.add_argument('--robust', action='store_true',
+                            help='Initialize system path robustly')
     options, remaining_options = arg_parser.parse_known_args()
-    system_conf = Path.cwd() / 'etc' / 'my_app.conf'
-    cfg = ConfigParser()
+    if options.robust:
+        # Robustly initialize system configuration file path
+        system_conf = Path(__file__).parent.resolve() / 'etc' / 'my_app.conf'
+    else:
+        # Non-robust initialization of system configuration path
+        system_conf = Path.cwd() / 'etc' / 'my_app.conf'
+    cfg = ConfigParser() 
     cfg['defaults'] = {'n': '1', 'a': '0', 'b': '6'}
     if options.verbose:
         print('application default values:', file=sys.stderr)
