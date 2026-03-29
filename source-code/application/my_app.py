@@ -24,7 +24,7 @@ def main():
         print('application default values:', file=sys.stderr)
         cfg.write(sys.stderr)
     if system_conf.exists():
-        cfg.read('etc/my_app.conf')
+        cfg.read(system_conf)
         if options.verbose:
             print('system configuration file values:', file=sys.stderr)
             cfg.write(sys.stderr)
