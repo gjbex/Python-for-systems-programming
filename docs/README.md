@@ -58,17 +58,62 @@ from scratch.
 If you plan to do Python programming in a Linux or HPC environment you should
 be familiar with these as well.
 
+More concretely, participants should already be comfortable with the following:
+
+* running Python code in Jupyter or from the command line;
+* variables, numbers, strings, booleans, and basic containers such as lists,
+  tuples, and dictionaries;
+* `if`/`else` statements, `for` loops, and simple comprehensions;
+* writing and calling functions with arguments and return values;
+* importing modules and using functions, classes, and constants from them;
+* reading and writing small text files using `open(...)`;
+* basic exception handling with `try`/`except`;
+* working with paths and file names at a basic level;
+* reading short Python scripts without needing every line explained.
+
+You do not need prior experience with `argparse`, `configparser`, logging,
+Jinja2, `subprocess`, `psutil`, AsyncSSH, Hydra, FastAPI, or binary/XML/CSV
+parsing libraries beyond the Python basics. Those are part of the training
+itself.
+
+### Quick self-assessment
+
+If you can do most of the tasks below without looking up basic Python syntax,
+you are likely ready for this training.
+
+* write a function that reads a text file and counts the number of lines;
+* use `if`/`else` and a loop to filter or transform file names;
+* import a module such as `pathlib`, `os`, `json`, or `csv` and use one of its
+  basic features;
+* define a small script that accepts one or two command-line arguments;
+* read a short script that opens files, loops over records, and prints a
+  result;
+* build a dictionary from a few key-value pairs and retrieve one by key;
+* make a small change to an existing script, run it again, and interpret the
+  output;
+* read a short traceback or error message and identify roughly where the
+  problem occurred.
+
+If several of these items still feel difficult, the training will probably move
+too fast. In that case, it is better to first take a short introductory Python
+course or refresh the basics.
+
 For following along hands-on, you need
 * laptop or desktop with internet access.
 * a Python environment that can run Jupyter Lab if you want to use your own system;
 * access to Google Colaboratory if you prefer not to install software.
 
 
-## Level
+## Level of the Material
+
+For participants who already have basic Python programming experience, the material in this training is approximately
 
 * Introductory: 20 %
-* Intermediate: 70 %
-* Advanced: 10 %
+* Intermediate: 60 %
+* Advanced: 20 %
+
+These percentages describe the level of the systems programming and scripting
+topics covered in the training, not the required entry level in Python itself.
 
 
 ## Trainer(s)
